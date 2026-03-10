@@ -32,7 +32,9 @@ pip install -r requirements.txt
     python signer_split_protonet.py
     ```
 
-## Citation
-If you use this code in your research, please consider citing our original paper on ISL Meta-Learning.
-*(Citation details will be updated pending publication)*
+## Citation and Manuscript Reference
+**Important Notice:** This codebase is directly related to our manuscript titled *"Meta-Learning Framework with Vision Transformers for Enhanced Indian Sign Language Recognition"* which is currently submitted to **The Visual Computer**.
+
+If you use this code or our open-source datasets in your research, we strongly encourage you to cite our relevant manuscript.
+*(Full citation details and DOI will be updated upon publication)*
 
