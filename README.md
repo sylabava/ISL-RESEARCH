@@ -1,7 +1,7 @@
 ﻿# Meta-Learning Framework with Vision Transformers for Enhanced Indian Sign Language Recognition
 
 [![DOI: Dataset](https://img.shields.io/badge/DOI-10.17632%2Fs6kgb6r3ss.2-blue)](https://data.mendeley.com/datasets/s6kgb6r3ss/2)
-[![DOI: Code](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxx.svg)](https://zenodo.org/) <!-- Note: Please link your GitHub repository to Zenodo to generate the actual DOI badge -->
+[![DOI: Code](https://zenodo.org/badge/DOI/10.5281/zenodo.19103031.svg)](https://doi.org/10.5281/zenodo.19103031)
 
 This repository contains the official PyTorch implementation of the open-source code for our research on **Meta-Learning Framework with Vision Transformers for Enhanced Indian Sign Language Recognition**. The models are rigorously evaluated on Indian Sign Language (ISL) datasets under Few-Shot Learning configurations.
 
