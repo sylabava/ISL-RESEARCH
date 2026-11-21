@@ -1,0 +1,10 @@
+Setting,Test_Classes,Model,Test_Mean,Test_Std,Test_CI95
+2-way 2-shot,3,ResNet-12_ProtoNet,79.98,18.26,2.92
+2-way 2-shot,3,ViT-B16_ProtoNet,91.16,8.43,1.35
+2-way 2-shot,3,Dual_Gated_Fusion_Proposed,87.8,9.92,1.59
+5-way 5-shot,5,ResNet-12_ProtoNet,65.8,7.38,1.18
+5-way 5-shot,5,ViT-B16_ProtoNet,87.84,4.63,0.74
+5-way 5-shot,5,Dual_Gated_Fusion_Proposed,80.97,5.47,0.88
+5-way 10-shot,5,ResNet-12_ProtoNet,68.9,6.48,1.04
+5-way 10-shot,5,ViT-B16_ProtoNet,90.09,3.49,0.56
+5-way 10-shot,5,Dual_Gated_Fusion_Proposed,83.22,4.21,0.67

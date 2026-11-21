@@ -1,0 +1,52 @@
+{
+  "MAML": {
+    "optimizer_outer": "Adam",
+    "inner_optimizer": "SGD",
+    "inner_lr_encoder": 0.01,
+    "inner_lr_classifier": 0.1,
+    "outer_lr_beta": 0.001,
+    "inner_steps": 5,
+    "grad_clip_norm": 1.0,
+    "weight_decay": 0.0001,
+    "meta_iters": 150,
+    "query_per_class": 15,
+    "eval_episodes_per_seed": 35,
+    "total_eval_episodes": 105,
+    "seeds": [42, 100, 2024],
+    "precision": "CUDA BF16 (torch.amp.autocast)",
+    "order": "First-Order MAML (FOMAML) with verified meta-gradient transfer and episodic BN sync"
+  },
+  "ProtoMAML": {
+    "optimizer_outer": "Adam",
+    "inner_optimizer": "SGD",
+    "inner_lr_encoder": 0.01,
+    "inner_lr_classifier": 0.1,
+    "outer_lr_beta": 0.001,
+    "inner_steps": 5,
+    "grad_clip_norm": 1.0,
+    "weight_decay": 0.0001,
+    "classifier_init": "Prototype-initialized linear weights (w_c = 2*c_k, b_c = -||c_k||^2)",
+    "meta_iters": 150,
+    "query_per_class": 15,
+    "eval_episodes_per_seed": 35,
+    "total_eval_episodes": 105,
+    "seeds": [42, 100, 2024],
+    "precision": "CUDA BF16 (torch.amp.autocast)"
+  },
+  "DualBackbone_Fusion_ProtoNet": {
+    "optimizer": "Adam",
+    "lr_resnet12_and_fusion": 0.001,
+    "lr_vit_b16": 1e-05,
+    "weight_decay": 0.0001,
+    "shared_embedding_dim": 256,
+    "temperature_init": 10.0,
+    "metric": "Unified L2-normalized Cosine Similarity (equivalent to Squared Euclidean on unit hypersphere)",
+    "fusion_variants": ["ResNet-12_Only", "ViT-B16_Only", "Dual_Concat_Fusion", "Dual_Score_Fusion", "Dual_Gated_Fusion_Proposed"],
+    "meta_iters": 200,
+    "query_per_class": 15,
+    "eval_episodes_per_seed": 50,
+    "total_paired_eval_episodes": 150,
+    "seeds": [42, 100, 2024],
+    "precision": "CUDA BF16 (torch.amp.autocast)"
+  }
+}

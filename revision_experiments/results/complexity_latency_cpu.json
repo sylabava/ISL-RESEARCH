@@ -1,0 +1,98 @@
+[
+  {
+    "model": "Conv4",
+    "input_shape": [
+      1,
+      3,
+      84,
+      84
+    ],
+    "device": "cpu",
+    "params_M": 0.11,
+    "mmac": 97.16,
+    "gflops": 0.19,
+    "latency_ms_mean": 1.96,
+    "latency_ms_std": 0.41,
+    "fps": 509.2
+  },
+  {
+    "model": "ResNet-12",
+    "input_shape": [
+      1,
+      3,
+      84,
+      84
+    ],
+    "device": "cpu",
+    "params_M": 12.42,
+    "mmac": 3507.98,
+    "gflops": 7.02,
+    "latency_ms_mean": 24.3,
+    "latency_ms_std": 1.05,
+    "fps": 41.1
+  },
+  {
+    "model": "ResNet-18",
+    "input_shape": [
+      1,
+      3,
+      84,
+      84
+    ],
+    "device": "cpu",
+    "params_M": 11.18,
+    "mmac": 296.06,
+    "gflops": 0.59,
+    "latency_ms_mean": 13.2,
+    "latency_ms_std": 1.2,
+    "fps": 75.8
+  },
+  {
+    "model": "ResNet-34",
+    "input_shape": [
+      1,
+      3,
+      84,
+      84
+    ],
+    "device": "cpu",
+    "params_M": 21.28,
+    "mmac": 612.28,
+    "gflops": 1.22,
+    "latency_ms_mean": 22.67,
+    "latency_ms_std": 1.73,
+    "fps": 44.1
+  },
+  {
+    "model": "ViT-B/16",
+    "input_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "device": "cpu",
+    "params_M": 85.8,
+    "mmac": 11270.36,
+    "gflops": 22.54,
+    "latency_ms_mean": 119.4,
+    "latency_ms_std": 1.84,
+    "fps": 8.4
+  },
+  {
+    "model": "Dual-Backbone (Gated Fusion)",
+    "input_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "device": "cpu",
+    "params_M": 98.72,
+    "mmac": 14778.83,
+    "gflops": 29.56,
+    "latency_ms_mean": 144.47,
+    "latency_ms_std": 1.72,
+    "fps": 6.9
+  }
+]

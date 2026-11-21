@@ -3,6 +3,7 @@ torchvision>=0.15.0
 torchaudio
 numpy
 pandas
+scipy
 scikit-learn
 matplotlib
 seaborn

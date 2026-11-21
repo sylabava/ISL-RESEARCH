@@ -4,9 +4,6 @@
 # In[ ]:
 
 
-python vit_protonet_step1_baseline.py
-
-
 # In[ ]:
 
 

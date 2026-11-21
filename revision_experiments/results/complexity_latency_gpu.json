@@ -1,0 +1,44 @@
+[
+  {
+    "model": "Conv4",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 0.73,
+    "gpu_latency_ms_std": 0.25,
+    "gpu_fps": 1375.5
+  },
+  {
+    "model": "ResNet-12",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 2.16,
+    "gpu_latency_ms_std": 0.53,
+    "gpu_fps": 463.4
+  },
+  {
+    "model": "ResNet-18",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 2.79,
+    "gpu_latency_ms_std": 0.71,
+    "gpu_fps": 357.8
+  },
+  {
+    "model": "ResNet-34",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 5.47,
+    "gpu_latency_ms_std": 1.09,
+    "gpu_fps": 182.8
+  },
+  {
+    "model": "ViT-B/16",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 10.07,
+    "gpu_latency_ms_std": 0.4,
+    "gpu_fps": 99.3
+  },
+  {
+    "model": "Dual-Backbone (Gated Fusion)",
+    "gpu": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "gpu_latency_ms_mean": 12.93,
+    "gpu_latency_ms_std": 0.74,
+    "gpu_fps": 77.4
+  }
+]

@@ -37,5 +37,5 @@ datasets/
 models/
 *.pth
 *.pt
-datasets/
 *.csv
+!revision_experiments/results/*.csv
