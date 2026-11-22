@@ -43,6 +43,7 @@ ISL-RESEARCH/
 └── revision_experiments/             # IJISA First Revision Reproducibility Suite
     ├── run_all_ijisa_revision_experiments.py  # Full multi-seed GPU suite (EXP 0–4)
     ├── profile_complexity_latency.py          # Params, GFLOPs, CPU/GPU latency & FPS
+    ├── regenerate_revised_figures.py          # 300-DPI manuscript figure generator
     └── results/                               # Exact verified experimental outputs
         ├── dataset_audit.json                 # 18,000 images, 20 classes, 6 signers, 0 duplicates
         ├── hyperparameters_table.json         # Complete training & evaluation hyperparameters
