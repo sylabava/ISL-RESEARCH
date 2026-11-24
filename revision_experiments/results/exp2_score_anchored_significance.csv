@@ -1,0 +1,5 @@
+mean_prop,std_prop,mean_base,std_base,delta,t_stat,t_pvalue,wilcoxon_pvalue,Protocol,Comparison
+94.15,4.44,70.95,8.01,23.2,31.9728,1.353396109439321e-68,2.1036947553406076e-26,unseen_class,Dual_Score_Fusion vs ResNet-12_Only
+94.15,4.44,93.3,4.26,0.84,2.3052,0.022536393302879563,0.006827792852732744,unseen_class,Dual_Score_Fusion vs ViT-B16_Only
+99.99,0.18,94.07,8.6,5.91,8.4293,2.743830481716012e-14,2.196164180413366e-14,cross_signer,Dual_Score_Fusion vs ResNet-12_Only
+99.99,0.18,99.81,1.41,0.18,1.5308,0.12793654362982332,0.08446903225325182,cross_signer,Dual_Score_Fusion vs ViT-B16_Only

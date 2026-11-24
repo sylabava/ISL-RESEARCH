@@ -43,6 +43,7 @@ ISL-RESEARCH/
 └── revision_experiments/             # Multi-Seed Reproducibility & Ablation Suite
     ├── run_all_ijisa_revision_experiments.py  # Full multi-seed GPU suite (EXP 0–4)
     ├── run_score_fusion_sota.py               # Matched SOTA evaluation for Weighted Score Fusion
+    ├── run_scie_review_upgrades.py            # Score-anchored paired stats, learned w, confusion & 6-fold LOSO
     ├── profile_complexity_latency.py          # Params, GFLOPs, CPU/GPU latency & FPS
     ├── regenerate_revised_figures.py          # 300-DPI manuscript figure generator
     └── results/                               # Exact verified experimental outputs
@@ -51,7 +52,10 @@ ISL-RESEARCH/
         ├── exp1_fixed_maml_protomaml_unseen.csv
         ├── exp2_fusion_ablation.csv
         ├── exp2_statistical_significance.csv
+        ├── exp2_score_anchored_significance.csv  # Direct Weighted Score Fusion paired tests
         ├── exp3_fair_sota_matched.csv
+        ├── exp5_loso_6fold_cross_signer.csv      # Full 6-fold Leave-One-Signer-Out validation
+        ├── score_fusion_analysis.json            # Learned weights w, tau & 3-class unseen confusion matrix
         ├── complexity_latency_cpu.json
         ├── complexity_latency_gpu.json
         ├── fig_maml_loss_curves.png           # 300-DPI 2-panel MAML/ProtoMAML convergence plot
@@ -79,7 +83,7 @@ pip install -r requirements.txt
 
 ## 4. Reproducing All Manuscript Results
 
-### A. Full Multi-Seed IJISA Revision Suite (Seeds `{42, 100, 2024}`)
+### A. Full Multi-Seed Reproducibility Suite (Seeds `{42, 100, 2024}`)
 Runs Dataset Audit (`EXP 0`), Corrected FOMAML & ProtoMAML (`EXP 1`), Dual-Backbone Fusion Ablation + Paired Statistical Tests (`EXP 2`), Fair Matched SOTA Benchmarks (`EXP 3`), and GPU Latency Profiling (`EXP 4`):
 
 ```bash
@@ -87,12 +91,18 @@ python revision_experiments/run_all_ijisa_revision_experiments.py --data_root ./
 ```
 All tables and figures are automatically written to `revision_experiments/results/` (supports automatic per-block resume if interrupted).
 
-### B. Standalone Complexity & Latency Profiler (CPU or GPU)
+### B. Score-Fusion-Anchored Paired Tests, Learned Branch Weights & 6-Fold LOSO Validation
+Runs direct Weighted-Score-anchored paired $t$/Wilcoxon tests against standalone ResNet-12 and ViT-B/16, logs exact learned fusion weights $w=\sigma(\alpha_w)$ and 3-class unseen confusion matrix, and executes full 6-fold Leave-One-Signer-Out cross-signer validation (`User_1`–`User_6`, 300 episodes):
+```bash
+python revision_experiments/run_scie_review_upgrades.py --data_root ./data
+```
+
+### C. Standalone Complexity & Latency Profiler (CPU or GPU)
 ```bash
 python revision_experiments/profile_complexity_latency.py
 ```
 
-### C. Individual Protocol Scripts
+### D. Individual Protocol Scripts
 ```bash
 python signer_split_protonet.py
 python unseen_protonet.py
@@ -117,6 +127,16 @@ python vit_baseline.py
 | | Dual-Backbone (Concatenation) | 87.36 ± 11.14 | 83.19 ± 6.42 |
 | | Dual-Backbone (Gated Feature Fusion) | 91.93 ± 7.31 | 90.55 ± 4.94 |
 | | **Dual-Backbone (Weighted Score Fusion)** | **95.69 ± 5.34** | **96.04 ± 3.36** |
+
+### Full 6-Fold Leave-One-Signer-Out (LOSO) Cross-Signer Validation (3-Way 10-Shot, 300 Episodes)
+
+| Model | 6-Fold Macro Mean ± Std (%) | Hardest Signer (`User_2`) | Learned Branch Weight $w$ |
+| :--- | :---: | :---: | :---: |
+| ResNet-12 + ProtoNet (Single) | 91.98 ± 4.08 | 84.00 ± 12.39 | — |
+| ViT-B/16 + ProtoNet (Single) | 99.86 ± 0.18 | 99.69 ± 1.35 | — |
+| **Dual-Backbone (Weighted Score Fusion)** | **99.75 ± 0.37** | **99.56 ± 1.27** | **0.4811 ± 0.0008** |
+
+*Direct Score-Fusion-anchored paired tests (150 episodes, unseen 3-way 10-shot): Weighted Score Fusion (`94.15%`) significantly outperforms ResNet-12 (`70.95%`, $p=1.35\times 10^{-68}$) and standalone ViT-B/16 (`93.30%`, paired $t$-test $p=0.0225$, Wilcoxon $p=0.0068$), with balanced learned weights $w = 0.4736 \pm 0.0015$ (unseen) and $w = 0.4723 \pm 0.0008$ (cross-signer).*
 
 ### Computational Complexity & Inference Efficiency
 

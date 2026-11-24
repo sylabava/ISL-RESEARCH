@@ -1,0 +1,53 @@
+{
+  "learned_fusion_weights": {
+    "unseen_class": {
+      "w_per_seed": [
+        0.4738,
+        0.475,
+        0.472
+      ],
+      "w_mean": 0.4736,
+      "w_std": 0.0015,
+      "vit_weight_mean": 0.5264,
+      "tau_mean": 10.1
+    },
+    "cross_signer": {
+      "w_per_seed": [
+        0.4715,
+        0.4723,
+        0.4731
+      ],
+      "w_mean": 0.4723,
+      "w_std": 0.0008,
+      "vit_weight_mean": 0.5277,
+      "tau_mean": 10.11
+    }
+  },
+  "unseen_3way_classes": [
+    "pain",
+    "afraid",
+    "bad"
+  ],
+  "unseen_3way_confusion_matrix": [
+    [
+      2065,
+      126,
+      59
+    ],
+    [
+      7,
+      2237,
+      6
+    ],
+    [
+      89,
+      108,
+      2053
+    ]
+  ],
+  "unseen_3way_per_class_recall_pct": {
+    "pain": 91.78,
+    "afraid": 99.42,
+    "bad": 91.24
+  }
+}
