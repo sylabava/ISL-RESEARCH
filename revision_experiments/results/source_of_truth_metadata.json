@@ -1,0 +1,436 @@
+{
+  "protocol_config": {
+    "n_way": 3,
+    "k_train": 5,
+    "k_eval": 10,
+    "q_train": 15,
+    "q_eval": 15,
+    "meta_iters": 200,
+    "episodes_per_seed": 50,
+    "seeds": [
+      42,
+      100,
+      2024
+    ],
+    "total_paired_episodes_per_protocol": 150,
+    "optimizer": "Adam (weight_decay=1e-4, no LR scheduler, fixed iteration budget)",
+    "lr_cnn_and_fusion": 0.001,
+    "lr_vit": 1e-05,
+    "grad_clip_norm": 2.0,
+    "mixed_precision": "torch.bfloat16 autocast on CUDA",
+    "preprocessing": "ResNet-12: 84x84 RGB; ViT-B/16: 224x224 RGB; ImageNet mean/std norm; train brightness/contrast jitter (+/-15-20%), no horizontal flip",
+    "embedding_normalization": "L2 unit hypersphere normalization (p=2, dim=-1) with learnable temperature tau (init=10.0)"
+  },
+  "splits": {
+    "unseen_class": {
+      "train_samples": 12600,
+      "val_samples": 2700,
+      "test_samples": 2700,
+      "train_classes": [
+        "agree",
+        "become",
+        "college",
+        "doctor",
+        "pray",
+        "secondary",
+        "skin",
+        "small",
+        "specific",
+        "stand",
+        "today",
+        "which",
+        "work",
+        "you"
+      ],
+      "val_classes": [
+        "assistance",
+        "from",
+        "warn"
+      ],
+      "test_classes": [
+        "afraid",
+        "bad",
+        "pain"
+      ],
+      "train_signers": [
+        "User_1",
+        "User_2",
+        "User_3",
+        "User_4",
+        "User_5",
+        "User_6"
+      ],
+      "val_signers": [
+        "User_1",
+        "User_2",
+        "User_3",
+        "User_4",
+        "User_5",
+        "User_6"
+      ],
+      "test_signers": [
+        "User_1",
+        "User_2",
+        "User_3",
+        "User_4",
+        "User_5",
+        "User_6"
+      ]
+    },
+    "cross_signer": {
+      "train_samples": 12000,
+      "val_samples": 3000,
+      "test_samples": 3000,
+      "train_classes": [
+        "afraid",
+        "agree",
+        "assistance",
+        "bad",
+        "become",
+        "college",
+        "doctor",
+        "from",
+        "pain",
+        "pray",
+        "secondary",
+        "skin",
+        "small",
+        "specific",
+        "stand",
+        "today",
+        "warn",
+        "which",
+        "work",
+        "you"
+      ],
+      "val_classes": [
+        "afraid",
+        "agree",
+        "assistance",
+        "bad",
+        "become",
+        "college",
+        "doctor",
+        "from",
+        "pain",
+        "pray",
+        "secondary",
+        "skin",
+        "small",
+        "specific",
+        "stand",
+        "today",
+        "warn",
+        "which",
+        "work",
+        "you"
+      ],
+      "test_classes": [
+        "afraid",
+        "agree",
+        "assistance",
+        "bad",
+        "become",
+        "college",
+        "doctor",
+        "from",
+        "pain",
+        "pray",
+        "secondary",
+        "skin",
+        "small",
+        "specific",
+        "stand",
+        "today",
+        "warn",
+        "which",
+        "work",
+        "you"
+      ],
+      "train_signers": [
+        "User_1",
+        "User_2",
+        "User_3",
+        "User_4"
+      ],
+      "val_signers": [
+        "User_5"
+      ],
+      "test_signers": [
+        "User_6"
+      ]
+    }
+  },
+  "runs": {
+    "unseen_class__s42__ResNet-12_Only": {
+      "mean_acc_pct": 87.07,
+      "std_acc_pct": 6.13,
+      "learned_w": null,
+      "learned_tau": 10.039,
+      "weight_sha256": "91290ec83d55812f",
+      "checkpoint_file": "",
+      "elapsed_sec": 41.3
+    },
+    "unseen_class__s42__ViT-B16_Only": {
+      "mean_acc_pct": 94.84,
+      "std_acc_pct": 3.49,
+      "learned_w": null,
+      "learned_tau": 10.124,
+      "weight_sha256": "a76458fa2b364a39",
+      "checkpoint_file": "",
+      "elapsed_sec": 100.4
+    },
+    "unseen_class__s42__Dual_Concat_Fusion": {
+      "mean_acc_pct": 89.78,
+      "std_acc_pct": 4.33,
+      "learned_w": null,
+      "learned_tau": 10.082,
+      "weight_sha256": "1307bcf7fca673af",
+      "checkpoint_file": "",
+      "elapsed_sec": 126.7
+    },
+    "unseen_class__s42__Dual_Gated_Fusion": {
+      "mean_acc_pct": 89.82,
+      "std_acc_pct": 3.42,
+      "learned_w": null,
+      "learned_tau": 10.122,
+      "weight_sha256": "5dd50c1c5b7b6562",
+      "checkpoint_file": "",
+      "elapsed_sec": 127.5
+    },
+    "unseen_class__s42__Dual_Score_Fusion": {
+      "mean_acc_pct": 97.78,
+      "std_acc_pct": 2.2,
+      "learned_w": 0.4596,
+      "learned_tau": 10.152,
+      "weight_sha256": "9fce1598afaf4c03",
+      "checkpoint_file": "checkpoints/unseen_class_s42_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 128.1
+    },
+    "unseen_class__s100__ResNet-12_Only": {
+      "mean_acc_pct": 76.36,
+      "std_acc_pct": 7.01,
+      "learned_w": null,
+      "learned_tau": 10.007,
+      "weight_sha256": "b887300f05f28821",
+      "checkpoint_file": "",
+      "elapsed_sec": 34.0
+    },
+    "unseen_class__s100__ViT-B16_Only": {
+      "mean_acc_pct": 93.82,
+      "std_acc_pct": 3.54,
+      "learned_w": null,
+      "learned_tau": 10.115,
+      "weight_sha256": "f83986df4f6275e2",
+      "checkpoint_file": "",
+      "elapsed_sec": 102.9
+    },
+    "unseen_class__s100__Dual_Concat_Fusion": {
+      "mean_acc_pct": 81.73,
+      "std_acc_pct": 5.96,
+      "learned_w": null,
+      "learned_tau": 10.081,
+      "weight_sha256": "8f118697bb675eff",
+      "checkpoint_file": "",
+      "elapsed_sec": 124.8
+    },
+    "unseen_class__s100__Dual_Gated_Fusion": {
+      "mean_acc_pct": 90.36,
+      "std_acc_pct": 4.53,
+      "learned_w": null,
+      "learned_tau": 10.121,
+      "weight_sha256": "f602eec3d467d5a6",
+      "checkpoint_file": "",
+      "elapsed_sec": 124.4
+    },
+    "unseen_class__s100__Dual_Score_Fusion": {
+      "mean_acc_pct": 93.69,
+      "std_acc_pct": 4.17,
+      "learned_w": 0.4582,
+      "learned_tau": 10.164,
+      "weight_sha256": "154f91fa0f7d1ba7",
+      "checkpoint_file": "checkpoints/unseen_class_s100_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 125.0
+    },
+    "unseen_class__s2024__ResNet-12_Only": {
+      "mean_acc_pct": 88.62,
+      "std_acc_pct": 6.05,
+      "learned_w": null,
+      "learned_tau": 10.053,
+      "weight_sha256": "736ee17d56e9c60a",
+      "checkpoint_file": "",
+      "elapsed_sec": 27.6
+    },
+    "unseen_class__s2024__ViT-B16_Only": {
+      "mean_acc_pct": 94.8,
+      "std_acc_pct": 4.89,
+      "learned_w": null,
+      "learned_tau": 10.117,
+      "weight_sha256": "c94f9838127156ec",
+      "checkpoint_file": "",
+      "elapsed_sec": 100.4
+    },
+    "unseen_class__s2024__Dual_Concat_Fusion": {
+      "mean_acc_pct": 80.0,
+      "std_acc_pct": 6.14,
+      "learned_w": null,
+      "learned_tau": 10.084,
+      "weight_sha256": "bbebb2f4bcd7e88e",
+      "checkpoint_file": "",
+      "elapsed_sec": 125.2
+    },
+    "unseen_class__s2024__Dual_Gated_Fusion": {
+      "mean_acc_pct": 93.73,
+      "std_acc_pct": 5.78,
+      "learned_w": null,
+      "learned_tau": 10.131,
+      "weight_sha256": "4bd1bd3c217fd33d",
+      "checkpoint_file": "",
+      "elapsed_sec": 127.6
+    },
+    "unseen_class__s2024__Dual_Score_Fusion": {
+      "mean_acc_pct": 98.13,
+      "std_acc_pct": 2.71,
+      "learned_w": 0.4577,
+      "learned_tau": 10.176,
+      "weight_sha256": "5e0d57d1da5e8809",
+      "checkpoint_file": "checkpoints/unseen_class_s2024_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 128.2
+    },
+    "cross_signer__s42__ResNet-12_Only": {
+      "mean_acc_pct": 93.91,
+      "std_acc_pct": 7.93,
+      "learned_w": null,
+      "learned_tau": 9.967,
+      "weight_sha256": "be8e37ceec4f7b30",
+      "checkpoint_file": "",
+      "elapsed_sec": 31.1
+    },
+    "cross_signer__s42__ViT-B16_Only": {
+      "mean_acc_pct": 99.73,
+      "std_acc_pct": 1.39,
+      "learned_w": null,
+      "learned_tau": 10.117,
+      "weight_sha256": "2a256d92a65ca12a",
+      "checkpoint_file": "",
+      "elapsed_sec": 102.2
+    },
+    "cross_signer__s42__Dual_Concat_Fusion": {
+      "mean_acc_pct": 98.8,
+      "std_acc_pct": 2.55,
+      "learned_w": null,
+      "learned_tau": 10.093,
+      "weight_sha256": "f8c491ed691db5c8",
+      "checkpoint_file": "",
+      "elapsed_sec": 125.4
+    },
+    "cross_signer__s42__Dual_Gated_Fusion": {
+      "mean_acc_pct": 99.2,
+      "std_acc_pct": 2.14,
+      "learned_w": null,
+      "learned_tau": 10.128,
+      "weight_sha256": "3b69fc5a5178956b",
+      "checkpoint_file": "",
+      "elapsed_sec": 126.7
+    },
+    "cross_signer__s42__Dual_Score_Fusion": {
+      "mean_acc_pct": 100.0,
+      "std_acc_pct": 0.0,
+      "learned_w": 0.4577,
+      "learned_tau": 10.167,
+      "weight_sha256": "9db9bcbd89f80be0",
+      "checkpoint_file": "checkpoints/cross_signer_s42_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 127.9
+    },
+    "cross_signer__s100__ResNet-12_Only": {
+      "mean_acc_pct": 91.56,
+      "std_acc_pct": 9.59,
+      "learned_w": null,
+      "learned_tau": 9.976,
+      "weight_sha256": "67c97b121d6317e7",
+      "checkpoint_file": "",
+      "elapsed_sec": 27.8
+    },
+    "cross_signer__s100__ViT-B16_Only": {
+      "mean_acc_pct": 99.82,
+      "std_acc_pct": 0.61,
+      "learned_w": null,
+      "learned_tau": 10.125,
+      "weight_sha256": "01f8d195755c53ec",
+      "checkpoint_file": "",
+      "elapsed_sec": 102.7
+    },
+    "cross_signer__s100__Dual_Concat_Fusion": {
+      "mean_acc_pct": 98.4,
+      "std_acc_pct": 2.81,
+      "learned_w": null,
+      "learned_tau": 10.089,
+      "weight_sha256": "fbb31e96fe478839",
+      "checkpoint_file": "",
+      "elapsed_sec": 127.3
+    },
+    "cross_signer__s100__Dual_Gated_Fusion": {
+      "mean_acc_pct": 99.07,
+      "std_acc_pct": 2.01,
+      "learned_w": null,
+      "learned_tau": 10.13,
+      "weight_sha256": "88816f86fe27800c",
+      "checkpoint_file": "",
+      "elapsed_sec": 126.1
+    },
+    "cross_signer__s100__Dual_Score_Fusion": {
+      "mean_acc_pct": 99.73,
+      "std_acc_pct": 0.86,
+      "learned_w": 0.4603,
+      "learned_tau": 10.164,
+      "weight_sha256": "6618380098070417",
+      "checkpoint_file": "checkpoints/cross_signer_s100_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 124.7
+    },
+    "cross_signer__s2024__ResNet-12_Only": {
+      "mean_acc_pct": 93.02,
+      "std_acc_pct": 9.42,
+      "learned_w": null,
+      "learned_tau": 9.982,
+      "weight_sha256": "08852aff2e2c5023",
+      "checkpoint_file": "",
+      "elapsed_sec": 25.9
+    },
+    "cross_signer__s2024__ViT-B16_Only": {
+      "mean_acc_pct": 99.96,
+      "std_acc_pct": 0.31,
+      "learned_w": null,
+      "learned_tau": 10.13,
+      "weight_sha256": "66584cce2c8ae4d6",
+      "checkpoint_file": "",
+      "elapsed_sec": 100.2
+    },
+    "cross_signer__s2024__Dual_Concat_Fusion": {
+      "mean_acc_pct": 97.24,
+      "std_acc_pct": 4.83,
+      "learned_w": null,
+      "learned_tau": 10.096,
+      "weight_sha256": "4e8997a4f3762517",
+      "checkpoint_file": "",
+      "elapsed_sec": 124.6
+    },
+    "cross_signer__s2024__Dual_Gated_Fusion": {
+      "mean_acc_pct": 99.29,
+      "std_acc_pct": 2.75,
+      "learned_w": null,
+      "learned_tau": 10.14,
+      "weight_sha256": "485cd43a7c4b202f",
+      "checkpoint_file": "",
+      "elapsed_sec": 124.4
+    },
+    "cross_signer__s2024__Dual_Score_Fusion": {
+      "mean_acc_pct": 99.96,
+      "std_acc_pct": 0.31,
+      "learned_w": 0.4557,
+      "learned_tau": 10.178,
+      "weight_sha256": "cd6cecaba43cbd66",
+      "checkpoint_file": "checkpoints/cross_signer_s2024_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 124.6
+    }
+  }
+}

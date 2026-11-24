@@ -1,0 +1,213 @@
+{
+  "total_queries": 6750,
+  "overall_acc_pct": 96.53,
+  "classes": [
+    "pain",
+    "afraid",
+    "bad"
+  ],
+  "matrix": [
+    [
+      2168,
+      43,
+      39
+    ],
+    [
+      3,
+      2235,
+      12
+    ],
+    [
+      84,
+      53,
+      2113
+    ]
+  ],
+  "per_class_recall_pct": {
+    "pain": 96.36,
+    "afraid": 99.33,
+    "bad": 93.91
+  },
+  "learned_weights": {
+    "cross_signer": {
+      "w_per_seed": [
+        0.4577,
+        0.4603,
+        0.4557
+      ],
+      "w_mean": 0.4579,
+      "w_std": 0.0023,
+      "vit_weight_mean": 0.5421,
+      "tau_mean": 10.17
+    },
+    "unseen_class": {
+      "w_per_seed": [
+        0.4596,
+        0.4582,
+        0.4577
+      ],
+      "w_mean": 0.4585,
+      "w_std": 0.001,
+      "vit_weight_mean": 0.5415,
+      "tau_mean": 10.16
+    }
+  },
+  "per_signer_breakdown": {
+    "User_1": {
+      "total_queries": 1078,
+      "overall_acc_pct": 99.17,
+      "per_class_recall_pct": {
+        "pain": 99.73,
+        "afraid": 97.83,
+        "bad": 100.0
+      },
+      "matrix": [
+        [
+          364,
+          0,
+          1
+        ],
+        [
+          0,
+          360,
+          8
+        ],
+        [
+          0,
+          0,
+          345
+        ]
+      ]
+    },
+    "User_2": {
+      "total_queries": 1178,
+      "overall_acc_pct": 91.0,
+      "per_class_recall_pct": {
+        "pain": 79.7,
+        "afraid": 100.0,
+        "bad": 93.47
+      },
+      "matrix": [
+        [
+          314,
+          43,
+          37
+        ],
+        [
+          0,
+          386,
+          0
+        ],
+        [
+          0,
+          26,
+          372
+        ]
+      ]
+    },
+    "User_3": {
+      "total_queries": 1123,
+      "overall_acc_pct": 99.38,
+      "per_class_recall_pct": {
+        "pain": 100.0,
+        "afraid": 98.25,
+        "bad": 100.0
+      },
+      "matrix": [
+        [
+          356,
+          0,
+          0
+        ],
+        [
+          3,
+          393,
+          4
+        ],
+        [
+          0,
+          0,
+          367
+        ]
+      ]
+    },
+    "User_4": {
+      "total_queries": 1122,
+      "overall_acc_pct": 99.91,
+      "per_class_recall_pct": {
+        "pain": 100.0,
+        "afraid": 100.0,
+        "bad": 99.73
+      },
+      "matrix": [
+        [
+          375,
+          0,
+          0
+        ],
+        [
+          0,
+          370,
+          0
+        ],
+        [
+          0,
+          1,
+          376
+        ]
+      ]
+    },
+    "User_5": {
+      "total_queries": 1111,
+      "overall_acc_pct": 93.61,
+      "per_class_recall_pct": {
+        "pain": 100.0,
+        "afraid": 100.0,
+        "bad": 80.86
+      },
+      "matrix": [
+        [
+          389,
+          0,
+          0
+        ],
+        [
+          0,
+          351,
+          0
+        ],
+        [
+          50,
+          21,
+          300
+        ]
+      ]
+    },
+    "User_6": {
+      "total_queries": 1138,
+      "overall_acc_pct": 96.49,
+      "per_class_recall_pct": {
+        "pain": 99.73,
+        "afraid": 100.0,
+        "bad": 90.05
+      },
+      "matrix": [
+        [
+          370,
+          0,
+          1
+        ],
+        [
+          0,
+          375,
+          0
+        ],
+        [
+          34,
+          5,
+          353
+        ]
+      ]
+    }
+  }
+}

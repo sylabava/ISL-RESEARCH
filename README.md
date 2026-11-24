@@ -113,30 +113,30 @@ python vit_baseline.py
 
 ## 5. Verified Benchmark Summary (Multi-Seed GPU Results)
 
-### Dual-Backbone Fusion Ablation (150 Paired Episodes: 3 Seeds × 50 Episodes)
+### Dual-Backbone Fusion Ablation — Single Source-of-Truth (150 Paired Episodes: 3 Seeds × 50 Episodes)
 
-| Protocol | Architecture / Fusion Variant | 2-Way 10-Shot (%) | 3-Way 10-Shot (%) |
-| :--- | :--- | :---: | :---: |
-| **Cross-Signer** | ResNet-12 + ProtoNet | 95.64 ± 8.86 | 92.83 ± 9.00 |
-| | ViT-B/16 + ProtoNet | 99.98 ± 0.27 | 99.84 ± 0.90 |
-| | Dual-Backbone (Concatenation) | 98.24 ± 4.10 | 98.76 ± 3.53 |
-| | Dual-Backbone (Gated Feature Fusion) | 99.53 ± 1.85 | 99.16 ± 2.40 |
-| | **Dual-Backbone (Weighted Score Fusion)** | **99.93 ± 0.47** | **99.67 ± 1.62** |
-| **Unseen-Class** | ResNet-12 + ProtoNet | 86.78 ± 15.67 | 84.01 ± 8.40 |
-| | ViT-B/16 + ProtoNet | 95.42 ± 5.15 | 94.83 ± 4.08 |
-| | Dual-Backbone (Concatenation) | 87.36 ± 11.14 | 83.19 ± 6.42 |
-| | Dual-Backbone (Gated Feature Fusion) | 91.93 ± 7.31 | 90.55 ± 4.94 |
-| | **Dual-Backbone (Weighted Score Fusion)** | **95.69 ± 5.34** | **96.04 ± 3.36** |
+| Protocol | Architecture / Fusion Variant | 2-Way 10-Shot (%) | 3-Way 10-Shot (%) | 3-Way Seed Mean ± Std (%) |
+| :--- | :--- | :---: | :---: | :---: |
+| **Cross-Signer** | ResNet-12 + ProtoNet | 95.64 ± 8.86 | 92.83 ± 9.00 | 92.83 ± 1.19 |
+| | ViT-B/16 + ProtoNet | 99.98 ± 0.27 | 99.84 ± 0.90 | 99.84 ± 0.12 |
+| | Dual-Backbone (Concatenation) | 98.24 ± 4.10 | 98.15 ± 3.58 | 98.15 ± 0.81 |
+| | Dual-Backbone (Gated Feature Fusion) | 99.53 ± 1.85 | 99.19 ± 2.31 | 99.19 ± 0.11 |
+| | **Dual-Backbone (Weighted Score Fusion)** | **99.93 ± 0.47** | **99.90 ± 0.54** | **99.90 ± 0.15** |
+| **Unseen-Class** | ResNet-12 + ProtoNet | 86.78 ± 15.67 | 84.01 ± 8.40 | 84.02 ± 6.68 |
+| | ViT-B/16 + ProtoNet | 95.42 ± 5.15 | 94.49 ± 4.03 | 94.49 ± 0.58 |
+| | Dual-Backbone (Concatenation) | 87.36 ± 11.14 | 83.84 ± 6.97 | 83.84 ± 5.22 |
+| | Dual-Backbone (Gated Feature Fusion) | 91.93 ± 7.31 | 91.30 ± 4.96 | 91.30 ± 2.12 |
+| | **Dual-Backbone (Weighted Score Fusion)** | **95.69 ± 5.34** | **96.53 ± 3.72** | **96.53 ± 2.47** |
 
-### Full 6-Fold Leave-One-Signer-Out (LOSO) Cross-Signer Validation (3-Way 10-Shot, 300 Episodes)
+### MD5-Sanitized 6-Fold Leave-One-Signer-Out (LOSO) Cross-Signer Validation (3-Way 10-Shot, 300 Episodes)
 
 | Model | 6-Fold Macro Mean ± Std (%) | Hardest Signer (`User_2`) | Learned Branch Weight $w$ |
 | :--- | :---: | :---: | :---: |
-| ResNet-12 + ProtoNet (Single) | 91.98 ± 4.08 | 84.00 ± 12.39 | — |
+| ResNet-12 + ProtoNet (Single) | 92.90 ± 4.62 | 84.00 ± 12.39 | — |
 | ViT-B/16 + ProtoNet (Single) | 99.86 ± 0.18 | 99.69 ± 1.35 | — |
-| **Dual-Backbone (Weighted Score Fusion)** | **99.75 ± 0.37** | **99.56 ± 1.27** | **0.4811 ± 0.0008** |
+| **Dual-Backbone (Weighted Score Fusion)** | **99.76 ± 0.38** | **99.56 ± 1.27** | **0.4810 ± 0.0008** |
 
-*Direct Score-Fusion-anchored paired tests (150 episodes, unseen 3-way 10-shot): Weighted Score Fusion (`94.15%`) significantly outperforms ResNet-12 (`70.95%`, $p=1.35\times 10^{-68}$) and standalone ViT-B/16 (`93.30%`, paired $t$-test $p=0.0225$, Wilcoxon $p=0.0068$), with balanced learned weights $w = 0.4736 \pm 0.0015$ (unseen) and $w = 0.4723 \pm 0.0008$ (cross-signer).*
+*All 3-way 10-shot results, Holm–Bonferroni adjusted paired tests (`Score Fusion 96.53%` vs. `ViT-B/16 94.49%`, $+2.04\%$, Holm $t$-$p=5.94\times 10^{-10}$, Holm Wilcoxon $p=1.51\times 10^{-9}$), balanced learned weights ($w = 0.4585 \pm 0.0010$ unseen, $w = 0.4579 \pm 0.0023$ cross-signer), and 6,750-query per-signer confusion matrices are deterministically recomputed from `revision_experiments/results/source_of_truth_episodes.csv` via `python revision_experiments/recompute_from_source_of_truth.py`.*
 
 ### Computational Complexity & Inference Efficiency
 
