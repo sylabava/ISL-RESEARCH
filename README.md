@@ -3,9 +3,9 @@
 [![DOI: Dataset](https://img.shields.io/badge/DOI-10.17632%2Fs6kgb6r3ss.2-blue)](https://data.mendeley.com/datasets/s6kgb6r3ss/2)
 [![DOI: Code](https://zenodo.org/badge/DOI/10.5281/zenodo.19103031.svg)](https://doi.org/10.5281/zenodo.19103031)
 
-This repository contains the official PyTorch source code, multi-seed GPU revision experiments, complexity profiling scripts, and verified experimental result tables for our manuscript:
+This repository contains the official PyTorch source code, multi-seed GPU benchmark experiments, complexity profiling scripts, and verified experimental result tables accompanying our manuscript:
 
-> **Baby Syla L., Salim A., and Piyoosh Purushothaman Nair**, *"Dual-Backbone Meta-Learning Framework for Cross-Signer and Unseen Class Indian Sign Language Recognition,"* submitted to the **International Journal of Intelligent Systems and Applications (IJISA)**, MECS Press.
+> **Baby Syla L., Salim A., and Piyoosh Purushothaman Nair**, *"Dual-Backbone Meta-Learning Framework for Cross-Signer and Unseen Class Indian Sign Language Recognition."* (Full journal citation and DOI will be added upon publication.)
 
 ---
 
@@ -40,8 +40,9 @@ ISL-RESEARCH/
 ├── unseen_protomaml.py               # ProtoMAML (Unseen-Class)
 ├── vit_baseline.py                   # Vision Transformer (ViT-B/16) ProtoNet
 │
-└── revision_experiments/             # IJISA First Revision Reproducibility Suite
+└── revision_experiments/             # Multi-Seed Reproducibility & Ablation Suite
     ├── run_all_ijisa_revision_experiments.py  # Full multi-seed GPU suite (EXP 0–4)
+    ├── run_score_fusion_sota.py               # Matched SOTA evaluation for Weighted Score Fusion
     ├── profile_complexity_latency.py          # Params, GFLOPs, CPU/GPU latency & FPS
     ├── regenerate_revised_figures.py          # 300-DPI manuscript figure generator
     └── results/                               # Exact verified experimental outputs
@@ -53,7 +54,8 @@ ISL-RESEARCH/
         ├── exp3_fair_sota_matched.csv
         ├── complexity_latency_cpu.json
         ├── complexity_latency_gpu.json
-        └── fig_maml_loss_curves.png           # 300-DPI MAML/ProtoMAML convergence plot
+        ├── fig_maml_loss_curves.png           # 300-DPI 2-panel MAML/ProtoMAML convergence plot
+        └── fig_fusion_ablation.png            # 300-DPI 2-panel Dual-Backbone Fusion ablation plot
 ```
 
 ---

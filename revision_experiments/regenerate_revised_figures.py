@@ -77,36 +77,45 @@ def draw_arrow(ax, x1, y1, x2, y2, color="#222222", lw=1.5, rad=0.0):
 # 1. FIG. 1 — 1.ARCHITECTURE.png (Unified Dual-Backbone Fusion)
 # =====================================================================
 def make_fig1_architecture():
-    fig, ax = plt.subplots(figsize=(14.0, 6.2), dpi=300)
+    fig, ax = plt.subplots(figsize=(14.0, 6.1), dpi=300)
     ax.set_xlim(0, 1.0)
     ax.set_ylim(0, 1.0)
     ax.axis("off")
 
+    # Cohesive, natural academic slate-blue palette (no green, no hardcoded results)
+    c_border = "#355070"
+    c_panel_bg = "#F7F9FC"
+    c_box_light = "#EBF2FA"
+    c_box_med = "#DCE8F5"
+    c_box_white = "#FFFFFF"
+    c_title = "#1D3557"
+    c_arrow = "#355070"
+
     # Outer dashed border matching Figs. 2 & 4
     outer = FancyBboxPatch(
-        (0.01, 0.02), 0.98, 0.90,
-        boxstyle="round,pad=0.005,rounding_size=0.018",
-        facecolor="#FFFFFF", edgecolor="#333333", linewidth=1.3,
+        (0.01, 0.025), 0.98, 0.895,
+        boxstyle="round,pad=0.005,rounding_size=0.016",
+        facecolor="#FFFFFF", edgecolor="#4A5568", linewidth=1.2,
         linestyle="--", zorder=1,
     )
     ax.add_patch(outer)
     ax.text(
         0.50, 0.955,
         "Dual-Backbone Meta-Learning Architecture with Unified Hyperspherical Fusion",
-        ha="center", va="center", fontsize=13.5, fontweight="bold", color="#111111",
+        ha="center", va="center", fontsize=13.2, fontweight="bold", color="#1A202C",
     )
 
     # --- Left: Input Episodic Task with Real ISL Thumbnails ---
     in_panel = FancyBboxPatch(
         (0.025, 0.14), 0.155, 0.72,
-        boxstyle="round,pad=0.004,rounding_size=0.015",
-        facecolor="#F7F8FA", edgecolor="#555555", linewidth=1.2, zorder=2,
+        boxstyle="round,pad=0.004,rounding_size=0.014",
+        facecolor=c_panel_bg, edgecolor=c_border, linewidth=1.15, zorder=2,
     )
     ax.add_patch(in_panel)
     ax.text(0.1025, 0.825, "Episodic ISL Input", ha="center", va="center",
-            fontsize=9.8, fontweight="bold", color="#1A2B4C", zorder=4)
+            fontsize=9.6, fontweight="bold", color=c_title, zorder=4)
     ax.text(0.1025, 0.775, r"Support $\mathcal{S}$ & Query $\mathcal{Q}$" + "\n(N-way K-shot)",
-            ha="center", va="center", fontsize=8.0, color="#333333", zorder=4)
+            ha="center", va="center", fontsize=8.0, color="#2D3748", zorder=4)
 
     # Load 4 real ISL gesture thumbnails
     sample_classes = ["pain", "bad", "afraid", "doctor"]
@@ -118,106 +127,106 @@ def make_fig1_architecture():
             im = Image.open(imgs[min(10, len(imgs) - 1)]).convert("RGB").resize((90, 90))
             oi = OffsetImage(np.asarray(im), zoom=0.45)
             ab = AnnotationBbox(oi, (tx, ty), frameon=True,
-                                bboxprops=dict(edgecolor="#666666", lw=0.8), zorder=4)
+                                bboxprops=dict(edgecolor="#718096", lw=0.75), zorder=4)
             ax.add_artist(ab)
             ax.text(tx, ty - 0.072, cls_name, ha="center", va="top",
-                    fontsize=7.2, color="#333333", style="italic", zorder=5)
+                    fontsize=7.2, color="#2D3748", style="italic", zorder=5)
 
     draw_box(ax, 0.035, 0.165, 0.135, 0.13,
              "Dual-Resolution\nPreprocessing\n" + r"$x_{84}$ & $x_{224}$",
-             fc="#E8EEF7", ec="#2B4C7E", lw=1.1, fontsize=7.8, fontweight="bold")
+             fc=c_box_light, ec=c_border, lw=1.05, fontsize=7.8, fontweight="bold", text_color=c_title)
 
     # --- Top Branch: ResNet-12 (Local Spatial Branch) ---
     top_bg = FancyBboxPatch(
         (0.205, 0.535), 0.465, 0.325,
-        boxstyle="round,pad=0.004,rounding_size=0.015",
-        facecolor="#FFF8EE", edgecolor="#C97A16", linewidth=1.2, linestyle="-", zorder=2,
+        boxstyle="round,pad=0.004,rounding_size=0.014",
+        facecolor=c_panel_bg, edgecolor=c_border, linewidth=1.15, zorder=2,
     )
     ax.add_patch(top_bg)
     ax.text(0.4375, 0.835, "Branch 1: Local Spatial CNN Path (ResNet-12)",
-            ha="center", va="center", fontsize=9.2, fontweight="bold", color="#9C5700", zorder=4)
+            ha="center", va="center", fontsize=9.2, fontweight="bold", color=c_title, zorder=4)
 
     draw_box(ax, 0.218, 0.575, 0.145, 0.215,
              "ResNet-12 Backbone\n" + r"Input: $84\times 84\times 3$" + "\n4 ResBlocks (64→640)\n+ Adaptive Avg Pool",
-             fc="#FFE4BD", ec="#B86B0A", lw=1.3, fontsize=8.0, fontweight="bold")
+             fc=c_box_med, ec=c_border, lw=1.15, fontsize=8.0, fontweight="bold", text_color="#1A202C")
     draw_box(ax, 0.388, 0.575, 0.115, 0.215,
              "L2 Normalization\n" + r"$\hat{h}^{(r)} \in \mathbb{S}^{639}$" + "\n640-D Unit\nEmbedding",
-             fc="#FDEBD0", ec="#B86B0A", lw=1.2, fontsize=7.8)
+             fc=c_box_light, ec=c_border, lw=1.05, fontsize=7.8, text_color="#1A202C")
     draw_box(ax, 0.528, 0.575, 0.130, 0.215,
              "CNN Prototypes\n" + r"$c_k^{(r)} = \mathrm{Norm}(\bar{h}_k^{(r)})$" + "\nScaled Logits:\n" + r"$s_k^{(r)} = \tau\,\hat{h}_q^{(r)\top} c_k^{(r)}$",
-             fc="#FFFFFF", ec="#B86B0A", lw=1.2, fontsize=7.6)
+             fc=c_box_white, ec=c_border, lw=1.05, fontsize=7.6, text_color="#1A202C")
 
-    draw_arrow(ax, 0.363, 0.682, 0.388, 0.682, color="#9C5700")
-    draw_arrow(ax, 0.503, 0.682, 0.528, 0.682, color="#9C5700")
+    draw_arrow(ax, 0.363, 0.682, 0.388, 0.682, color=c_arrow, lw=1.4)
+    draw_arrow(ax, 0.503, 0.682, 0.528, 0.682, color=c_arrow, lw=1.4)
 
     # --- Bottom Branch: ViT-B/16 (Global Contextual Branch) ---
     bot_bg = FancyBboxPatch(
         (0.205, 0.14), 0.465, 0.325,
-        boxstyle="round,pad=0.004,rounding_size=0.015",
-        facecolor="#EEF6FC", edgecolor="#1E6091", linewidth=1.2, linestyle="-", zorder=2,
+        boxstyle="round,pad=0.004,rounding_size=0.014",
+        facecolor=c_panel_bg, edgecolor=c_border, linewidth=1.15, zorder=2,
     )
     ax.add_patch(bot_bg)
     ax.text(0.4375, 0.440, "Branch 2: Global Contextual Transformer Path (ViT-B/16)",
-            ha="center", va="center", fontsize=9.2, fontweight="bold", color="#164B73", zorder=4)
+            ha="center", va="center", fontsize=9.2, fontweight="bold", color=c_title, zorder=4)
 
     draw_box(ax, 0.218, 0.180, 0.145, 0.215,
              "ViT-B/16 Backbone\n" + r"Input: $224\times 224\times 3$" + "\n196 Patches (16×16)\n12× MSA + MLP Layers",
-             fc="#CCE4F7", ec="#1E6091", lw=1.3, fontsize=8.0, fontweight="bold")
+             fc=c_box_med, ec=c_border, lw=1.15, fontsize=8.0, fontweight="bold", text_color="#1A202C")
     draw_box(ax, 0.388, 0.180, 0.115, 0.215,
              "L2 Normalization\n" + r"$\hat{h}^{(v)} \in \mathbb{S}^{767}$" + "\n768-D Unit\nEmbedding",
-             fc="#DFEFFB", ec="#1E6091", lw=1.2, fontsize=7.8)
+             fc=c_box_light, ec=c_border, lw=1.05, fontsize=7.8, text_color="#1A202C")
     draw_box(ax, 0.528, 0.180, 0.130, 0.215,
              "ViT Prototypes\n" + r"$c_k^{(v)} = \mathrm{Norm}(\bar{h}_k^{(v)})$" + "\nScaled Logits:\n" + r"$s_k^{(v)} = \tau\,\hat{h}_q^{(v)\top} c_k^{(v)}$",
-             fc="#FFFFFF", ec="#1E6091", lw=1.2, fontsize=7.6)
+             fc=c_box_white, ec=c_border, lw=1.05, fontsize=7.6, text_color="#1A202C")
 
-    draw_arrow(ax, 0.363, 0.287, 0.388, 0.287, color="#164B73")
-    draw_arrow(ax, 0.503, 0.287, 0.528, 0.287, color="#164B73")
+    draw_arrow(ax, 0.363, 0.287, 0.388, 0.287, color=c_arrow, lw=1.4)
+    draw_arrow(ax, 0.503, 0.287, 0.528, 0.287, color=c_arrow, lw=1.4)
 
     # Input -> Branches arrows
-    draw_arrow(ax, 0.180, 0.682, 0.218, 0.682, color="#333333", lw=1.7)
-    draw_arrow(ax, 0.180, 0.287, 0.218, 0.287, color="#333333", lw=1.7)
+    draw_arrow(ax, 0.180, 0.682, 0.218, 0.682, color=c_arrow, lw=1.5)
+    draw_arrow(ax, 0.180, 0.287, 0.218, 0.287, color=c_arrow, lw=1.5)
 
-    # --- Right: Unified Hyperspherical Metric Space & Fusion ---
+    # --- Right: Unified Hyperspherical Metric Space & Fusion (Matched Slate-Blue) ---
     fus_bg = FancyBboxPatch(
         (0.695, 0.14), 0.280, 0.72,
-        boxstyle="round,pad=0.004,rounding_size=0.015",
-        facecolor="#F0F8F2", edgecolor="#1E7A46", linewidth=1.5, zorder=2,
+        boxstyle="round,pad=0.004,rounding_size=0.014",
+        facecolor=c_panel_bg, edgecolor=c_border, linewidth=1.25, zorder=2,
     )
     ax.add_patch(fus_bg)
     ax.text(0.835, 0.828, "Unified Hyperspherical\nDual-Backbone Fusion",
-            ha="center", va="center", fontsize=9.8, fontweight="bold", color="#125430", zorder=4)
+            ha="center", va="center", fontsize=9.6, fontweight="bold", color=c_title, zorder=4)
 
     draw_box(ax, 0.712, 0.655, 0.246, 0.125,
              "Unified Metric Equivalence\n" + r"$\|\hat{z}_q - c_k\|_2^2 = 2 - 2\cos(\hat{z}_q, c_k)$",
-             fc="#FFFFFF", ec="#1E7A46", lw=1.1, fontsize=8.0)
+             fc=c_box_white, ec=c_border, lw=1.05, fontsize=8.0, text_color="#1A202C")
 
-    draw_box(ax, 0.712, 0.445, 0.246, 0.175,
+    draw_box(ax, 0.712, 0.455, 0.246, 0.165,
              "Learnable Weighted Score Fusion\n" +
              r"$s_{\mathrm{fused}}(q,k) = w\,s_k^{(r)} + (1-w)\,s_k^{(v)}$" + "\n" +
-             r"$w = \sigma(\alpha_w)$  (also ablated:" + "\nConcat & Gated Feature Fusion)",
-             fc="#D6F0DF", ec="#1E7A46", lw=1.4, fontsize=7.8, fontweight="bold")
+             r"where $w = \sigma(\alpha_w) \in (0, 1)$",
+             fc=c_box_med, ec=c_border, lw=1.2, fontsize=7.9, fontweight="bold", text_color="#1A202C")
 
-    draw_box(ax, 0.712, 0.295, 0.246, 0.115,
-             "Softmax Prediction\n" + r"$\hat{y} = \arg\max_k\; p_\Theta(y=k \mid x_q, \mathcal{S})$",
-             fc="#FFFFFF", ec="#1E7A46", lw=1.1, fontsize=8.0)
+    draw_box(ax, 0.712, 0.305, 0.246, 0.115,
+             "Softmax Classification\n" + r"$p_\Theta(y=k \mid x_q, \mathcal{S}) = \mathrm{softmax}(s_{\mathrm{fused}})$",
+             fc=c_box_white, ec=c_border, lw=1.05, fontsize=7.6, text_color="#1A202C")
 
-    draw_box(ax, 0.712, 0.162, 0.246, 0.100,
-             "Dual Generalization Output\nCross-Signer (99.93%) | Unseen Class (96.04%)",
-             fc="#1E7A46", ec="#125430", lw=1.2, fontsize=7.5, fontweight="bold", text_color="#FFFFFF")
+    draw_box(ax, 0.712, 0.162, 0.246, 0.105,
+             r"Predicted Gesture Class $\hat{y}$" + "\n(Cross-Signer & Unseen-Class Tasks)",
+             fc=c_box_light, ec=c_border, lw=1.2, fontsize=8.0, fontweight="bold", text_color=c_title)
 
     # Arrows inside Fusion block
-    draw_arrow(ax, 0.835, 0.655, 0.835, 0.620, color="#125430")
-    draw_arrow(ax, 0.835, 0.445, 0.835, 0.410, color="#125430")
-    draw_arrow(ax, 0.835, 0.295, 0.835, 0.262, color="#125430")
+    draw_arrow(ax, 0.835, 0.655, 0.835, 0.620, color=c_arrow, lw=1.4)
+    draw_arrow(ax, 0.835, 0.455, 0.835, 0.420, color=c_arrow, lw=1.4)
+    draw_arrow(ax, 0.835, 0.305, 0.835, 0.267, color=c_arrow, lw=1.4)
 
     # Arrows from Branch 1 & Branch 2 logits into Weighted Score Fusion
-    draw_arrow(ax, 0.658, 0.682, 0.712, 0.560, color="#9C5700", lw=1.8, rad=-0.10)
-    draw_arrow(ax, 0.658, 0.287, 0.712, 0.505, color="#164B73", lw=1.8, rad=0.10)
+    draw_arrow(ax, 0.658, 0.682, 0.712, 0.562, color=c_arrow, lw=1.6, rad=-0.10)
+    draw_arrow(ax, 0.658, 0.287, 0.712, 0.512, color=c_arrow, lw=1.6, rad=0.10)
 
     # Bottom caption note inside border
     ax.text(0.50, 0.068,
-            "Joint Episodic Training via Adam (Differential LRs: ResNet-12 & Fusion = 1e-3, ViT-B/16 = 1e-5; Temperature τ = 10)",
-            ha="center", va="center", fontsize=8.4, color="#333333", style="italic")
+            "Joint Episodic Meta-Training via Adam (Differential LRs: ResNet-12 & Fusion = 1e-3, ViT-B/16 = 1e-5; Temperature τ = 10)",
+            ha="center", va="center", fontsize=8.3, color="#4A5568", style="italic")
 
     out_path = TEX_DIR / "1.ARCHITECTURE.png"
     fig.savefig(out_path, dpi=300, bbox_inches="tight", facecolor="white")
@@ -573,6 +582,90 @@ def make_fig14_unseen_class_kshot():
     print(f"[7/7] Saved standardized 300-DPI {out_path}")
 
 
+# =====================================================================
+# 8. NEW FIG. — fig_fusion_ablation.png (Dual-Backbone Fusion Ablation)
+# =====================================================================
+def make_fig_fusion_ablation():
+    labels = [
+        "ResNet-12\n(Single)",
+        "Dual\nConcat",
+        "Dual\nGated",
+        "ViT-B/16\n(Single)",
+        "Dual Weighted\nScore (Best)",
+    ]
+    cs_2w = [95.64, 98.24, 99.53, 99.98, 99.93]
+    cs_2w_ci = [1.42, 0.66, 0.30, 0.04, 0.07]
+    cs_3w = [92.83, 98.76, 99.16, 99.84, 99.67]
+    cs_3w_ci = [1.44, 0.56, 0.38, 0.14, 0.26]
+
+    uc_2w = [86.78, 87.36, 91.93, 95.42, 95.69]
+    uc_2w_ci = [2.51, 1.78, 1.17, 0.82, 0.86]
+    uc_3w = [84.01, 83.19, 90.55, 94.83, 96.04]
+    uc_3w_ci = [1.34, 1.03, 0.79, 0.65, 0.54]
+
+    fig, axes = plt.subplots(1, 2, figsize=(12.2, 4.7), dpi=300)
+    x = np.arange(len(labels))
+    w = 0.36
+    c_2w, c_3w, c_best_edge = "#6C91BF", "#1D3557", "#B45309"
+
+    panels = [
+        (axes[0], "Cross-Signer Generalization (User_6)", cs_2w, cs_2w_ci, cs_3w, cs_3w_ci, (88.0, 102.5)),
+        (axes[1], "Unseen Gesture Class Recognition", uc_2w, uc_2w_ci, uc_3w, uc_3w_ci, (78.0, 102.0)),
+    ]
+
+    for idx, (ax, title, y2, e2, y3, e3, ylim) in enumerate(panels):
+        b1 = ax.bar(
+            x - w / 2, y2, width=w, yerr=e2, capsize=3,
+            color=c_2w, edgecolor="#243B55", linewidth=0.85,
+            error_kw=dict(ecolor="#222222", lw=1.0, capthick=1.0),
+            label="2-Way 10-Shot", zorder=3,
+        )
+        b2 = ax.bar(
+            x + w / 2, y3, width=w, yerr=e3, capsize=3,
+            color=c_3w, edgecolor="#102136", linewidth=0.85,
+            error_kw=dict(ecolor="#222222", lw=1.0, capthick=1.0),
+            label="3-Way 10-Shot", zorder=3,
+        )
+        ax.axvspan(3.52, 4.48, color="#EDF2F8", alpha=0.85, zorder=1)
+        b1[-1].set_edgecolor(c_best_edge)
+        b1[-1].set_linewidth(1.5)
+        b2[-1].set_edgecolor(c_best_edge)
+        b2[-1].set_linewidth(1.5)
+
+        for bar, val, err in zip(b1, y2, e2):
+            ax.text(bar.get_x() + bar.get_width() / 2, min(val + err + 0.32, ylim[1] - 0.8),
+                    f"{val:.2f}", ha="center", va="bottom", fontsize=7.4, fontweight="bold", color="#2B4C7E")
+        for bar, val, err in zip(b2, y3, e3):
+            ax.text(bar.get_x() + bar.get_width() / 2, min(val + err + 0.32, ylim[1] - 0.8),
+                    f"{val:.2f}", ha="center", va="bottom", fontsize=7.4, fontweight="bold", color="#102136")
+
+        if idx == 1:
+            ax.annotate(
+                "+12.03% vs. ResNet-12\n+1.21% vs. ViT-B/16 (p < 0.001)",
+                xy=(4 + w / 2, 96.04 + 0.54 + 0.9), xytext=(2.15, 99.6),
+                ha="center", va="center", fontsize=7.8, fontweight="bold", color="#1D3557",
+                bbox=dict(boxstyle="round,pad=0.28", fc="#FFFFFF", ec="#355070", lw=0.9),
+                arrowprops=dict(arrowstyle="->", color="#355070", lw=1.2, connectionstyle="arc3,rad=-0.12"),
+                zorder=5,
+            )
+
+        ax.set_title(title, fontsize=11.0, fontweight="bold", color="#1A202C", pad=8)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, fontsize=8.3)
+        ax.set_ylim(*ylim)
+        ax.grid(axis="y", linestyle="--", alpha=0.45, zorder=0)
+        ax.legend(fontsize=8.5, loc="lower right", frameon=True)
+
+    axes[0].set_ylabel("Episodic Test Accuracy (% ± 95% CI)", fontsize=9.8)
+    fig.suptitle(
+        "Dual-Backbone Fusion Ablation Across Cross-Signer and Unseen-Class Protocols (150 Paired Episodes)",
+        fontsize=11.6, fontweight="bold", color="#1A202C", y=1.01,
+    )
+    fig.tight_layout()
+    fig.savefig(GIT_RES / "fig_fusion_ablation.png", dpi=300, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 def main():
     make_fig1_architecture()
     make_fig5_pipeline()
@@ -581,7 +674,8 @@ def main():
     make_fig12_baseline_bar()
     make_fig13_cross_signer_kshot()
     make_fig14_unseen_class_kshot()
-    print("\nALL 7 FIGURES REGENERATED AT 300 DPI SUCCESSFULLY!")
+    make_fig_fusion_ablation()
+    print("\nALL FIGURES REGENERATED AT 300 DPI SUCCESSFULLY!")
 
 
 if __name__ == "__main__":

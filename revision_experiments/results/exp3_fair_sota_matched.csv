@@ -8,3 +8,6 @@ Setting,Test_Classes,Model,Test_Mean,Test_Std,Test_CI95
 5-way 10-shot,5,ResNet-12_ProtoNet,68.9,6.48,1.04
 5-way 10-shot,5,ViT-B16_ProtoNet,90.09,3.49,0.56
 5-way 10-shot,5,Dual_Gated_Fusion_Proposed,83.22,4.21,0.67
+2-way 2-shot,3,Dual_Score_Fusion_Best,90.87,8.93,1.43
+5-way 5-shot,5,Dual_Score_Fusion_Best,87.11,4.92,0.79
+5-way 10-shot,5,Dual_Score_Fusion_Best,88.65,3.86,0.62
