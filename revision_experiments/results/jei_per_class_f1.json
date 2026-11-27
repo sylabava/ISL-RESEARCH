@@ -1,0 +1,27 @@
+{
+  "total_queries": 6750,
+  "overall_acc_pct": 96.53,
+  "macro_precision_pct": 96.56,
+  "macro_recall_pct": 96.53,
+  "macro_f1_pct": 96.52,
+  "per_class": {
+    "pain": {
+      "precision_pct": 96.14,
+      "recall_pct": 96.36,
+      "f1_pct": 96.25,
+      "support": 2250
+    },
+    "afraid": {
+      "precision_pct": 95.88,
+      "recall_pct": 99.33,
+      "f1_pct": 97.58,
+      "support": 2250
+    },
+    "bad": {
+      "precision_pct": 97.64,
+      "recall_pct": 93.91,
+      "f1_pct": 95.74,
+      "support": 2250
+    }
+  }
+}

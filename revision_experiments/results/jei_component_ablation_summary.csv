@@ -1,0 +1,5 @@
+Protocol,Variant,Mean_Acc,Std_Acc,CI95,Delta_vs_Proposed,Paired_t_p,Wilcoxon_p,Mean_w
+unseen_class,Dual_Unnorm_Euclidean,94.8,3.79,0.61,1.73,1.651329995872754e-06,1.3055561581028925e-06,0.4961
+unseen_class,Dual_L2_FixedW05_FixedTau,96.44,3.53,0.56,0.09,0.6911995401580403,0.27082539587342014,0.5
+cross_signer,Dual_Unnorm_Euclidean,99.88,0.67,0.11,0.01,0.8356248780826189,0.9665165964249498,0.491
+cross_signer,Dual_L2_FixedW05_FixedTau,99.79,1.07,0.17,0.1,0.2241918781321905,0.2355589199240795,0.5

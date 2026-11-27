@@ -1,0 +1,80 @@
+{
+  "Unseen_Test_SupU5_to_QryU6_3w10s": {
+    "episodes": 150,
+    "episode_mean_pct": 98.39,
+    "episode_std_pct": 2.91,
+    "episode_ci95_pct": 0.47,
+    "seed_means_pct": [
+      98.76,
+      99.96,
+      96.44
+    ],
+    "seed_mean_pct": 98.39,
+    "seed_std_pct": 1.79
+  },
+  "Unseen_Test_SupU6_to_QryU5_3w10s": {
+    "episodes": 150,
+    "episode_mean_pct": 92.9,
+    "episode_std_pct": 4.9,
+    "episode_ci95_pct": 0.78,
+    "seed_means_pct": [
+      90.58,
+      97.96,
+      90.18
+    ],
+    "seed_mean_pct": 92.91,
+    "seed_std_pct": 4.38
+  },
+  "Unseen_Test_SupU5_to_QryU6_3w5s": {
+    "episodes": 150,
+    "episode_mean_pct": 98.15,
+    "episode_std_pct": 3.44,
+    "episode_ci95_pct": 0.55,
+    "seed_means_pct": [
+      98.71,
+      99.51,
+      96.22
+    ],
+    "seed_mean_pct": 98.15,
+    "seed_std_pct": 1.72
+  },
+  "Unseen_Test_SupU6_to_QryU5_3w5s": {
+    "episodes": 150,
+    "episode_mean_pct": 93.45,
+    "episode_std_pct": 5.29,
+    "episode_ci95_pct": 0.85,
+    "seed_means_pct": [
+      90.31,
+      98.93,
+      91.11
+    ],
+    "seed_mean_pct": 93.45,
+    "seed_std_pct": 4.76
+  },
+  "Unseen_Val_SupU6_to_QryU5_3w10s": {
+    "episodes": 150,
+    "episode_mean_pct": 56.58,
+    "episode_std_pct": 7.98,
+    "episode_ci95_pct": 1.28,
+    "seed_means_pct": [
+      57.87,
+      62.84,
+      49.02
+    ],
+    "seed_mean_pct": 56.58,
+    "seed_std_pct": 7.0
+  },
+  "Unseen_Val_SupU5_to_QryU6_3w10s": {
+    "episodes": 150,
+    "episode_mean_pct": 70.43,
+    "episode_std_pct": 8.57,
+    "episode_ci95_pct": 1.37,
+    "seed_means_pct": [
+      75.69,
+      75.07,
+      60.53
+    ],
+    "seed_mean_pct": 70.43,
+    "seed_std_pct": 8.58
+  }
+}

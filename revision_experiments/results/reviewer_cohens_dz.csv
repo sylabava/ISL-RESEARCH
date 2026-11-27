@@ -1,0 +1,13 @@
+Protocol,Baseline,Mean_Diff_pp,Cohens_dz
+unseen_class,ResNet-12_Only,12.52,1.723
+unseen_class,ViT-B16_Only,2.04,0.541
+unseen_class,Dual_Concat_Fusion,12.7,1.792
+unseen_class,Dual_Gated_Fusion,5.23,1.054
+cross_signer,ResNet-12_Only,7.07,0.785
+cross_signer,ViT-B16_Only,0.06,0.062
+cross_signer,Dual_Concat_Fusion,1.75,0.487
+cross_signer,Dual_Gated_Fusion,0.71,0.325
+unseen_class,Dual_Unnorm_Euclidean,1.73,0.408
+unseen_class,Dual_L2_FixedW05_FixedTau,0.09,0.032
+cross_signer,Dual_Unnorm_Euclidean,0.01,0.017
+cross_signer,Dual_L2_FixedW05_FixedTau,0.1,0.1

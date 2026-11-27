@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "Success",
+    "true_class": "afraid",
+    "pred_class": "afraid",
+    "signer": "User_1",
+    "image_name": "afraid_38_User1_38.jpg",
+    "episode_occurrences": 4
+  },
+  {
+    "kind": "Success",
+    "true_class": "pain",
+    "pred_class": "pain",
+    "signer": "User_3",
+    "image_name": "pain_438_User3_438.jpg",
+    "episode_occurrences": 4
+  },
+  {
+    "kind": "Success",
+    "true_class": "bad",
+    "pred_class": "bad",
+    "signer": "User_4",
+    "image_name": "bad_573_User4_573.jpg",
+    "episode_occurrences": 4
+  },
+  {
+    "kind": "Failure",
+    "true_class": "pain",
+    "pred_class": "afraid",
+    "signer": "User_2",
+    "image_name": "pain_270_User2_270.jpg",
+    "episode_occurrences": 3
+  },
+  {
+    "kind": "Failure",
+    "true_class": "pain",
+    "pred_class": "bad",
+    "signer": "User_2",
+    "image_name": "pain_197_User2_197.jpg",
+    "episode_occurrences": 1
+  },
+  {
+    "kind": "Failure",
+    "true_class": "bad",
+    "pred_class": "pain",
+    "signer": "User_6",
+    "image_name": "bad_757_User6_757.jpg",
+    "episode_occurrences": 1
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "total_images": 18000,
+  "resolutions_top5": [
+    [
+      "200x200",
+      17700
+    ],
+    [
+      "588x368",
+      150
+    ],
+    [
+      "688x529",
+      120
+    ],
+    [
+      "539x650",
+      30
+    ]
+  ],
+  "exact_md5_duplicate_groups": 799,
+  "exact_md5_cross_signer_leakage": 150,
+  "exact_md5_cross_class_leakage": 0,
+  "dhash_exact_collision_groups": 3874,
+  "dhash_within_same_signer_and_class_groups": 3811,
+  "dhash_cross_signer_collisions": 63,
+  "dhash_cross_class_collisions": 0,
+  "hardware": {
+    "cpu_model": "AMD Ryzen AI 7 350 w/ Radeon 860M",
+    "os_logical_cores": 16,
+    "torch_num_threads": 8,
+    "torch_version": "2.11.0+cu128",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU"
+  }
+}

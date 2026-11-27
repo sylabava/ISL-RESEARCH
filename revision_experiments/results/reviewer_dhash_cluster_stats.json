@@ -1,0 +1,23 @@
+{
+  "cross_signer": {
+    "total_test_images": 3000,
+    "num_classes": 20,
+    "min_unique_dhash_per_class": 14,
+    "median_unique_dhash_per_class": 57.5,
+    "total_unique_dhash_clusters": 921
+  },
+  "unseen_class": {
+    "total_test_images": 2700,
+    "num_classes": 3,
+    "min_unique_dhash_per_class": 150,
+    "median_unique_dhash_per_class": 204.0,
+    "total_unique_dhash_clusters": 790
+  },
+  "simultaneous_u6": {
+    "total_test_images": 450,
+    "num_classes": 3,
+    "min_unique_dhash_per_class": 15,
+    "median_unique_dhash_per_class": 58.0,
+    "total_unique_dhash_clusters": 152
+  }
+}

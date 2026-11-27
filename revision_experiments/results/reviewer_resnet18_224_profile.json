@@ -1,0 +1,12 @@
+{
+  "model": "ResNet-18 (224x224)",
+  "params_m": 11.18,
+  "gflops": 3.63,
+  "gmacs": 1.81,
+  "cpu_lat_ms": 17.04,
+  "cpu_std_ms": 1.14,
+  "cpu_fps": 58.7,
+  "gpu_lat_ms": 2.37,
+  "gpu_std_ms": 0.23,
+  "gpu_fps": 421.4
+}

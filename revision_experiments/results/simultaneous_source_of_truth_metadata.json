@@ -1,0 +1,475 @@
+{
+  "protocol": "simultaneous_cross_signer_unseen_class",
+  "protocol_config": {
+    "n_way_train": 3,
+    "k_train": 5,
+    "q_train": 15,
+    "meta_iters": 200,
+    "eval_settings": [
+      {
+        "name": "test_3w10s",
+        "split": "test",
+        "n_way": 3,
+        "k_shot": 10,
+        "q_eval": 15,
+        "episodes_per_seed": 50
+      },
+      {
+        "name": "test_3w5s",
+        "split": "test",
+        "n_way": 3,
+        "k_shot": 5,
+        "q_eval": 15,
+        "episodes_per_seed": 50
+      },
+      {
+        "name": "test_2w10s",
+        "split": "test",
+        "n_way": 2,
+        "k_shot": 10,
+        "q_eval": 15,
+        "episodes_per_seed": 50
+      },
+      {
+        "name": "val_3w10s",
+        "split": "val",
+        "n_way": 3,
+        "k_shot": 10,
+        "q_eval": 15,
+        "episodes_per_seed": 50
+      }
+    ],
+    "seeds": [
+      42,
+      100,
+      2024
+    ],
+    "optimizer": "Adam (weight_decay=1e-4, no LR scheduler, fixed 200-iter budget, no val/test tuning)",
+    "lr_cnn_and_fusion": 0.001,
+    "lr_vit": 1e-05,
+    "grad_clip_norm": 2.0,
+    "mixed_precision": "torch.bfloat16 autocast on CUDA"
+  },
+  "splits": {
+    "train_samples": 8400,
+    "val_samples": 450,
+    "test_samples": 450,
+    "excluded_cross_block_samples": 8700,
+    "train_signers": [
+      "User_1",
+      "User_2",
+      "User_3",
+      "User_4"
+    ],
+    "val_signers": [
+      "User_5"
+    ],
+    "test_signers": [
+      "User_6"
+    ],
+    "train_classes": [
+      "agree",
+      "become",
+      "college",
+      "doctor",
+      "pray",
+      "secondary",
+      "skin",
+      "small",
+      "specific",
+      "stand",
+      "today",
+      "which",
+      "work",
+      "you"
+    ],
+    "val_classes": [
+      "assistance",
+      "from",
+      "warn"
+    ],
+    "test_classes": [
+      "afraid",
+      "bad",
+      "pain"
+    ],
+    "verified_zero_md5_overlap": true
+  },
+  "runs": {
+    "s42__ResNet-12_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 98.49,
+          "std": 2.71
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.045,
+      "weight_sha256": "e281d3896b108989",
+      "checkpoint_file": "",
+      "elapsed_sec": 49.1
+    },
+    "s42__ViT-B16_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.116,
+      "weight_sha256": "236983ebdc4193ef",
+      "checkpoint_file": "",
+      "elapsed_sec": 148.8
+    },
+    "s42__Dual_Concat_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 97.2,
+          "std": 2.83
+        },
+        "test_3w5s": {
+          "mean": 97.78,
+          "std": 2.2
+        },
+        "test_2w10s": {
+          "mean": 98.4,
+          "std": 2.45
+        },
+        "val_3w10s": {
+          "mean": 93.78,
+          "std": 4.51
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.061,
+      "weight_sha256": "53f6c094e5a833a2",
+      "checkpoint_file": "",
+      "elapsed_sec": 185.2
+    },
+    "s42__Dual_Gated_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 98.49,
+          "std": 2.03
+        },
+        "test_3w5s": {
+          "mean": 99.07,
+          "std": 1.56
+        },
+        "test_2w10s": {
+          "mean": 99.33,
+          "std": 1.9
+        },
+        "val_3w10s": {
+          "mean": 99.91,
+          "std": 0.44
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.108,
+      "weight_sha256": "a4cbfc4a9c961f6b",
+      "checkpoint_file": "",
+      "elapsed_sec": 187.4
+    },
+    "s42__Dual_Score_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        }
+      },
+      "learned_w": 0.4606,
+      "learned_tau": 10.156,
+      "weight_sha256": "1aaec47cd6ba57cb",
+      "checkpoint_file": "checkpoints/simultaneous_s42_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 186.9
+    },
+    "s100__ResNet-12_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 99.78,
+          "std": 1.03
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 98.49,
+          "std": 1.82
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.008,
+      "weight_sha256": "906dbabdbfe351c5",
+      "checkpoint_file": "",
+      "elapsed_sec": 41.2
+    },
+    "s100__ViT-B16_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 99.96,
+          "std": 0.31
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.098,
+      "weight_sha256": "829c3535b30bab3b",
+      "checkpoint_file": "",
+      "elapsed_sec": 149.4
+    },
+    "s100__Dual_Concat_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 99.82,
+          "std": 0.61
+        },
+        "test_3w5s": {
+          "mean": 99.73,
+          "std": 0.73
+        },
+        "test_2w10s": {
+          "mean": 99.93,
+          "std": 0.47
+        },
+        "val_3w10s": {
+          "mean": 91.6,
+          "std": 4.41
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.059,
+      "weight_sha256": "ddfb4a64822dc324",
+      "checkpoint_file": "",
+      "elapsed_sec": 184.1
+    },
+    "s100__Dual_Gated_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 98.58,
+          "std": 1.47
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.103,
+      "weight_sha256": "ba825fa2108b55dc",
+      "checkpoint_file": "",
+      "elapsed_sec": 184.6
+    },
+    "s100__Dual_Score_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 99.96,
+          "std": 0.31
+        }
+      },
+      "learned_w": 0.4616,
+      "learned_tau": 10.154,
+      "weight_sha256": "f4eae495575b8345",
+      "checkpoint_file": "checkpoints/simultaneous_s100_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 186.4
+    },
+    "s2024__ResNet-12_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 97.82,
+          "std": 2.27
+        },
+        "test_3w5s": {
+          "mean": 97.16,
+          "std": 2.95
+        },
+        "test_2w10s": {
+          "mean": 98.93,
+          "std": 2.07
+        },
+        "val_3w10s": {
+          "mean": 91.33,
+          "std": 6.14
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.021,
+      "weight_sha256": "1093ab867a92b9ca",
+      "checkpoint_file": "",
+      "elapsed_sec": 52.9
+    },
+    "s2024__ViT-B16_Only": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.093,
+      "weight_sha256": "068cdb7686c36fa5",
+      "checkpoint_file": "",
+      "elapsed_sec": 207.0
+    },
+    "s2024__Dual_Concat_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 99.96,
+          "std": 0.31
+        },
+        "test_3w5s": {
+          "mean": 99.87,
+          "std": 0.7
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 90.53,
+          "std": 5.02
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.069,
+      "weight_sha256": "2f1a258965490643",
+      "checkpoint_file": "",
+      "elapsed_sec": 256.0
+    },
+    "s2024__Dual_Gated_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 97.33,
+          "std": 3.08
+        },
+        "test_3w5s": {
+          "mean": 97.64,
+          "std": 2.35
+        },
+        "test_2w10s": {
+          "mean": 98.0,
+          "std": 3.09
+        },
+        "val_3w10s": {
+          "mean": 97.16,
+          "std": 2.62
+        }
+      },
+      "learned_w": null,
+      "learned_tau": 10.106,
+      "weight_sha256": "3c8d5738d6d91262",
+      "checkpoint_file": "",
+      "elapsed_sec": 245.0
+    },
+    "s2024__Dual_Score_Fusion": {
+      "metrics": {
+        "test_3w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_3w5s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "test_2w10s": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "val_3w10s": {
+          "mean": 99.51,
+          "std": 1.13
+        }
+      },
+      "learned_w": 0.459,
+      "learned_tau": 10.151,
+      "weight_sha256": "1fb1721752d31d97",
+      "checkpoint_file": "checkpoints/simultaneous_s2024_Dual_Score_Fusion_fp16.pt",
+      "elapsed_sec": 194.5
+    }
+  }
+}

@@ -1,0 +1,5 @@
+Protocol,Model,Mean_Acc,Std_Acc,CI95,Delta_vs_DualScore,Paired_t_p,Cohens_dz
+unseen_class,ResNet-18_ImageNet1K_224,86.71,5.95,0.95,9.82,1.203894383868709e-48,1.796
+unseen_class,ViT-B16_Scratch_224,39.96,8.62,1.38,56.58,3.9359157328350015e-119,6.018
+cross_signer,ResNet-18_ImageNet1K_224,99.51,1.15,0.18,0.39,0.00018017389745781593,0.314
+cross_signer,ViT-B16_Scratch_224,33.66,2.77,0.44,66.24,8.678475454201633e-207,23.614

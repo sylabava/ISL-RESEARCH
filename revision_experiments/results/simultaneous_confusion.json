@@ -1,0 +1,44 @@
+{
+  "protocol": "simultaneous_cross_signer_unseen_class",
+  "test_signer": "User_6",
+  "total_queries": 6750,
+  "overall_acc_pct": 100.0,
+  "classes": [
+    "pain",
+    "afraid",
+    "bad"
+  ],
+  "matrix": [
+    [
+      2250,
+      0,
+      0
+    ],
+    [
+      0,
+      2250,
+      0
+    ],
+    [
+      0,
+      0,
+      2250
+    ]
+  ],
+  "per_class_recall_pct": {
+    "pain": 100.0,
+    "afraid": 100.0,
+    "bad": 100.0
+  },
+  "learned_weights": {
+    "w_per_seed": [
+      0.4606,
+      0.4616,
+      0.459
+    ],
+    "w_mean": 0.4604,
+    "w_std": 0.0013,
+    "vit_weight_mean": 0.5396,
+    "tau_mean": 10.15
+  }
+}
